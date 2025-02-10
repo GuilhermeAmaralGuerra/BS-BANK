@@ -1,0 +1,517 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f6f8;
+    margin: 0;
+}
+
+.header {
+    width: 100%;
+    background-color: #0056b3;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.header nav {
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.header nav a:hover {
+    color: #ffcc00;
+}
+
+.button-header {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.visibilidadeHeader{
+    height: 3rem;
+    width: 100%;
+    overflow: hidden;
+    transition: height 1s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+}
+.visibilidadeHeader a,
+.visibilidadeHeader h1 {
+    display: none;
+}
+.visibilidadeHeader button{
+    transform: rotate(180deg);
+}
+
+main {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+
+main section{
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 5rem;
+}
+
+main section .texts{
+    width: 100%;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 1rem;
+}
+
+main section .texts h2{
+    color: #0056b3;
+    font-size: 1.7rem;
+}
+
+main section .texts p{
+    color: #666;
+    font-size: 1.1rem;
+}
+
+main section .texts button{
+    width: 10rem;
+    padding: 0.5rem;
+    background: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+main section .texts button:hover{
+    color: #ffcc00;
+    transition: 0.5s;
+}
+
+main section .atalhos{
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+main section .atalhos button{
+    width: 8rem;
+    padding: 0.5rem;
+    background: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+main section .atalhos button:hover{
+    color: #ffcc00;
+    transform: scale(1.10);
+    transition: 0.5s;
+}
+
+main section hr{
+    margin-top: 1rem;
+    width: 90%;
+}
+
+main section .Text-Analise{
+    width: 100%;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 1rem;
+}
+
+main section .Text-Analise h2{
+    color: #0056b3;
+    font-size: 1.7rem;
+}
+
+main section .Text-Analise p{
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.popUpTransferir{
+    display: none;
+    position: fixed;
+}
+
+.popUpTransferir.mostrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    background-color: #f4f6f8;
+    border: 2px solid #0056b3;
+    border-radius: 1rem;
+    top: 10rem;
+}
+
+.popUpTransferir.mostrar .popUpItens{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.popUpTransferir.mostrar .popUpItens .fecharBotao{
+    width: 130%;
+    display: flex;
+    justify-content: right;
+}
+
+.popUpTransferir.mostrar .popUpItens .fecharTransferir{
+    width: 2rem;
+    padding: 0.6rem;
+    color: #fff;
+    background-color: red;
+    cursor: pointer;
+    border: none;
+}
+
+.popUpTransferir.mostrar .popUpItens h2{
+    font-size: 1.7rem;
+    color: #0056b3;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpTransferir.mostrar .popUpItens p{
+    font-size: 1.2rem;
+    color: #0056b3;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpTransferir.mostrar .popUpItens .enviarTransferir{
+    width: 5rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: #0056b3;
+    cursor: pointer;
+    border: none;
+}
+
+.popUpTransferir.mostrar .popUpItens form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.popUpTransferir.mostrar .popUpItens form label{
+    color: #0056b3;
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpTransferir.mostrar .popUpItens form input{
+    width: 18rem;
+    height: 1.5rem;
+    background-color: #c3c3c3;
+    color: black;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.popUpSaqueDeposito{
+    display: none;
+    position: fixed;
+}
+
+.popUpSaqueDeposito.mostrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 25rem;
+    background-color: #f4f6f8;
+    border: 2px solid #0056b3;
+    border-radius: 1rem;
+    top: 10rem;
+}
+
+.popUpSaqueDeposito.mostrar .popUpItens{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.popUpSaqueDeposito.mostrar .popUpItens .fecharBotao{
+    width: 130%;
+    display: flex;
+    justify-content: right;
+}
+
+.popUpSaqueDeposito.mostrar .popUpItens .fecharSaqueDeposito{
+    width: 2rem;
+    padding: 0.6rem;
+    color: #fff;
+    background-color: red;
+    cursor: pointer;
+    border: none;
+}
+
+.popUpSaqueDeposito.mostrar .popUpItens h2{
+    font-size: 1.7rem;
+    color: #0056b3;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.popUpSaqueDeposito.mostrar .popUpItens form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.popUpSaqueDeposito.mostrar .popUpItens label{
+    color: #0056b3;
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpSaqueDeposito.mostrar .popUpItens form .valor{
+    width: 18rem;
+    height: 1.5rem;
+    background-color: #c3c3c3;
+    color: black;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.popUpSaqueDeposito.mostrar .popUpItens .enviarSaqueDeposito{
+    width: 5rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: #0056b3;
+    cursor: pointer;
+    border: none;
+}
+
+.popUpEmprestimo{
+    display: none;
+    position: fixed;
+}
+
+.popUpEmprestimo.mostrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    background-color: #f4f6f8;
+    border: 2px solid #0056b3;
+    border-radius: 1rem;
+    top: 10rem;
+}
+
+.popUpEmprestimo.mostrar .popUpItens{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.popUpEmprestimo.mostrar .popUpItens .fecharBotao{
+    width: 90%;
+    display: flex;
+    justify-content: right;
+}
+.popUpEmprestimo.mostrar .popUpItens .fecharEmprestimo{
+    width: 2rem;
+    padding: 0.6rem;
+    color: #fff;
+    background-color: red;
+    cursor: pointer;
+    border: none;
+}
+.popUpEmprestimo.mostrar .popUpItens h2{
+    font-size: 1.7rem;
+    color: #0056b3;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpEmprestimo.mostrar .popUpItens form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.popUpEmprestimo.mostrar .popUpItens label{
+    color: #0056b3;
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.popUpEmprestimo.mostrar .popUpItens form .inputRadio{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-left: 5rem;
+}
+
+.popUpEmprestimo.mostrar .popUpItens .motivo{
+    width: 18rem;
+    height: 1.5rem;
+    background-color: #c3c3c3;
+    color: black;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.popUpEmprestimo.mostrar .popUpItens .enviarEmprestimo{
+    width: 5rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: #0056b3;
+    cursor: pointer;
+    border: none;
+}
+
+.popUpPagarEmprestimo{
+    display: none;
+    position: fixed;
+}
+
+.popUpPagarEmprestimo.mostrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    background-color: #f4f6f8;
+    border: 2px solid #0056b3;
+    border-radius: 1rem;
+    top: 10rem;
+}
+
+.popUpPagarEmprestimo.mostrar .popUpItens{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.popUpPagarEmprestimo.mostrar .popUpItens .fecharBotao{
+    width: 90%;
+    display: flex;
+    justify-content: right;
+}
+.popUpPagarEmprestimo.mostrar .popUpItens .fecharPagarEmprestimo{
+    width: 2rem;
+    padding: 0.6rem;
+    color: #fff;
+    background-color: red;
+    cursor: pointer;
+    border: none;
+}
+.popUpPagarEmprestimo.mostrar .popUpItens h2{
+    font-size: 1.7rem;
+    color: #0056b3;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpPagarEmprestimo.mostrar .popUpItens p{
+    font-size: 1.2rem;
+    color: #0056b3;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpPagarEmprestimo.mostrar .popUpItens form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.popUpPagarEmprestimo.mostrar .popUpItens label{
+    font-size: 1.2rem;
+    color: #0056b3;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpPagarEmprestimo.mostrar .popUpItens form .valorPagamento{
+    width: 18rem;
+    height: 1.5rem;
+    background-color: #c3c3c3;
+    color: black;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.popUpPagarEmprestimo.mostrar .popUpItens .enviarPagarEmprestimo{
+    width: 5rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: #0056b3;
+    cursor: pointer;
+    border: none;
+}
+
+footer {
+    width: 100%;
+    background: #0056b3;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}

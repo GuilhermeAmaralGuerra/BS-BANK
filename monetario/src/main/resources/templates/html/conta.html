@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/conta.css">
+    <title>Conta - BS-Bank</title>
+</head>
+<body>
+    
+    <header class="header" id="header">
+        <h1>BS-Bank</h1>
+        <nav>
+            <a th:href="@{/principal}">Tela principal</a>
+            <a href="">Histórico</a>
+            <a href="" class="deslogar" id="deslogar">Sair</a>
+        </nav> 
+        <button class="button-header" id="button-header" onclick="modificarHeader">&Hat;</button>
+    </header>
+
+    <main>
+
+        <section>
+
+            <h2>Informações</h2>
+
+            <div class="informacoes">
+
+                <div class="informacao">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome">
+                </div>
+
+                <div class="informacao">
+                    <label for="nomeCompleto">Nome Completo:</label>
+                    <input type="text" id="nomeCompleto">
+                </div>
+
+                <div class="informacao">
+                    <label for="email">email:</label>
+                    <input type="text" id="email">
+                </div>
+
+                <div class="informacao">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep">
+                </div>
+
+                <div class="informacao">
+                    <label for="cpf">cpf:</label>
+                    <input type="text" id="cpf">
+                </div>
+
+                <div class="informacao">
+                    <label for="dataNascimento">Data de nascimento:</label>
+                    <input type="text" id="dataNascimento">
+                </div>
+
+            </div>
+
+            <div class="botoes">
+                <button>Trocar senha</button>
+                <button id="enviarInformacoes">Efetuar alterações</button>
+                <button>Voltar</button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="/js/conta.js"></script>
+</body>
+</html>

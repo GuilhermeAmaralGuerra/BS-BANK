@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/telaPrincipal.css">
+    <title>BS-Bank - Página Principal</title>
+</head>
+<body>
+
+    <header class="header" id="header">
+        <h1>BS-Bank</h1>
+        <nav>
+            <a th:href="@{/conta}">Conta</a>
+            <a href="">Histórico</a>
+            <a class="deslogar" id="deslogar">Sair</a>
+        </nav> 
+        <button class="button-header" id="button-header" onclick="modificarHeader">&Hat;</button>
+    </header>
+
+    <main>
+        <section>
+
+            <div class="texts">
+                <h2>Bem Vindo! <span id="nome"></span></h2>
+                <p>Seu saldo é de: <span id="saldo"></span></p>
+                <button id="visibilidadeSaldo" class="visibilidadeSaldo">Ocultar saldo</button>
+            </div>
+            <hr>
+            <div class="atalhos">
+                <button id="transferirBtn">transferir</button>
+                <button id="saqueDepositoBtn">saque/deposito</button>
+                <button id="emprestimoBtn">emprestimo</button>
+                <button id="pagarEmprestimoBtn">pagar emprestimo</button>
+            </div>
+
+        </section>
+
+        <section>
+
+                <div class="Text-Analise">
+                    <h2>Analise de gastos</h2>
+                    <p>faça um acompanhamento de seus gastos de acordo com as tags que você possui!</p>
+                </div>
+                <hr>
+                <div class="Tags-container">
+
+                </div>
+        </section>
+    </main>
+
+        
+    <!-- colocar n hora de inserir no BD o tipo emprestimo -->
+    <div id="popUpTransferir" class="popUpTransferir">
+        <div class="popUpItens">
+            
+            <div class="fecharBotao">
+                <button id="fecharTransferir" class="fecharTransferir">&times;</button>
+            </div>
+
+            <h2>Transferência</h2>
+            <p>Código de transferencia: <span>123456789101</span></p>
+            
+            <form action="" method="post">
+
+                <label for="codigo">Insira o codigo de transferencia:</label>
+                <input type="text" placeholder="EX: 123456789" id="codigo">
+
+                <label for="valorTransferir">Insira o valor:</label>
+                <input type="number" id="valorTransferir" placeholder="EX: 10.55">
+
+                <label for="descricaoTransferir" >Descrição:</label>
+                <input type="text" id="descricaoTransferir">
+
+            </form>
+
+            <button id="enviarTransferir" class="enviarTransferir">Enviar</button>
+
+        </div>
+    </div> 
+
+    <!-- Colocar os buttons radio de saque e deposito -->
+    <div id="popUpSaqueDeposito" class="popUpSaqueDeposito">
+        <div class="popUpItens">
+
+            <div class="fecharBotao">
+                <button id="fecharSaqueDeposito" class="fecharSaqueDeposito">&times;</button>
+            </div>
+
+            <h2>Saque/Depósito</h2>
+
+            <form action="" method="post">
+                <label for="">Valor:</label>
+                <input type="number" id="valor" class="valor">
+
+                <label>Tipo:</label>
+                <div class="saqueContainer">
+                    <input type="radio" id="saque" class="inputRadio" name="tipoTransacao" value="saque">
+                    <label for="saque">Saque</label>
+                </div>
+                
+                <div class="depositoContainer">
+                    <input type="radio" id="deposito" class="inputRadio" name="tipoTransacao" value="deposito">
+                    <label for="deposito">Deposito</label>
+                </div>
+                
+            </form>
+
+            <button id="enviarSaqueDeposito" class="enviarSaqueDeposito">enviar</button>
+
+        </div>
+    </div>
+
+    <div id="popUpEmprestimo" class="popUpEmprestimo">
+        <div class="popUpItens">
+
+            <div class="fecharBotao">
+                <button id="fecharEmprestimo" class="fecharEmprestimo">&times;</button>
+            </div>
+            <h2>Empréstimo</h2>
+
+            <form action="" method="post">
+
+                <label for="">Valor:</label>
+                
+                <div class="inputRadio">
+
+                    <div class="valores">
+                        <input type="radio" name="valor" value="1000" id="valor1">
+                        <label for="valor1">1000</label>
+                    </div>
+
+                    <div class="valores">
+                        <input type="radio" name="valor" value="2500" id="valor2">
+                        <label for="valor2">2500</label>
+                    </div>
+
+                    <div class="valores">
+                        <input type="radio" name="valor" value="5000" id="valor3">
+                        <label for="valor3">5000</label>
+                    </div>
+
+                    <div class="valores">
+                        <input type="radio" name="valor" value="10000" id="valor4">
+                        <label for="valor4">10000</label>
+                    </div>
+
+                    <div class="valores">
+                        <input type="radio" name="valor" value="50000" id="valor5">
+                        <label for="valor5">50000</label>
+                    </div>
+
+                    <div class="valores">
+                        <input type="radio" name="valor" value="100000" id="valor6">
+                        <label for="valor6">100000</label>
+                    </div>
+
+                </div>
+
+                <label for="motivo">Motivo do empréstimo:</label>
+                <input type="text" id="motivo" class="motivo">
+
+            </form>
+                
+            <button id="enviarEmprestimo" class="enviarEmprestimo">enviar</button>
+
+        </div>
+    </div>
+
+    <div id="popUpPagarEmprestimo" class="popUpPagarEmprestimo">
+        <div class="popUpItens">
+
+            <div class="fecharBotao">
+                <button id="fecharPagarEmprestimo" class="fecharPagarEmprestimo">&times;</button>
+            </div>
+
+            <h2>Pagar empréstimo</h2>
+            <p>Valor a ser pago: <span id="valorTotal"></span></p>
+            <p>Juros mensal: <span id="juros"> </span> </p>
+
+            <form action="" method="post">
+
+                <label for="">Valor do pagamento:</label>
+                <input type="number" id="valorPagamento" class="valorPagamento">
+                
+            </form>
+
+            <button id="enviarPagarEmprestimo" class="enviarPagarEmprestimo">enviar</button>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 BS-Bank. Todos os direitos reservados.</p>
+    </footer>
+    <script src="/js/telaPrincipalEstilo.js"></script>
+    <script src="/js/telaPrincipalJson.js"></script>
+</body>
+</html>
