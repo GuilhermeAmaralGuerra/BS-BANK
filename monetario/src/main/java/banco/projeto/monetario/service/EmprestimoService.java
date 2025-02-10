@@ -22,6 +22,7 @@ import banco.projeto.monetario.request.EmprestimoPostRequestBody;
 import banco.projeto.monetario.request.EmprestimoPutRequestBody;
 import lombok.RequiredArgsConstructor;
 
+//Service da classe emprestimo
 @Service
 @RequiredArgsConstructor
 public class EmprestimoService {

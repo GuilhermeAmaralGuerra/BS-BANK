@@ -23,6 +23,7 @@ import banco.projeto.monetario.utils.ValidacaoUtils;
 import banco.projeto.monetario.utils.VerificacaoUtils;
 import lombok.RequiredArgsConstructor;
 
+//Service da classe Usuario
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {

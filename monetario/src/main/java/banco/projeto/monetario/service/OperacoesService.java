@@ -13,6 +13,7 @@ import banco.projeto.monetario.repository.OperacoesRepository;
 import banco.projeto.monetario.request.OperacoesPostRequestBody;
 import lombok.RequiredArgsConstructor;
 
+//Service da classe operacoes
 @Service
 @RequiredArgsConstructor
 public class OperacoesService {
