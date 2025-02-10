@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import jakarta.servlet.http.HttpSession;
 
+//Controller referente às páginas
 @Controller
 public class PagesController {
 

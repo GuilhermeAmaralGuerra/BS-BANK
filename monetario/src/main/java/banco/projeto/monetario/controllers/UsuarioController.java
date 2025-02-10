@@ -18,6 +18,7 @@ import banco.projeto.monetario.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import jakarta.servlet.http.HttpSession;
 
+//Controller da classe usuario
 @RestController
 @RequiredArgsConstructor
 public class UsuarioController {

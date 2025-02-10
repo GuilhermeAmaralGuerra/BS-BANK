@@ -13,6 +13,7 @@ import banco.projeto.monetario.service.OperacoesService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
+//Controller da classe operacoes
 @RestController
 @RequiredArgsConstructor
 public class OperacoesController {

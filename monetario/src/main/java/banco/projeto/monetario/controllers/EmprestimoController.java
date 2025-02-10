@@ -18,6 +18,7 @@ import banco.projeto.monetario.service.EmprestimoService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
+//Controller da classe emprestimo
 @RestController
 @RequiredArgsConstructor
 public class EmprestimoController {
