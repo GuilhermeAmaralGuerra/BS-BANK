@@ -92,3 +92,36 @@ async function enviarNovasInformacoes() {
 }
 
 document.getElementById('enviarInformacoes').addEventListener('click', enviarNovasInformacoes);
+
+async function deslogar() {
+    try {
+        const resposta = await fetch("http://localhost:8080/deslogar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        if (resposta.ok) {
+            window.location.href = "/login";
+        } else{
+            const errorMsg = await resposta.text();
+            throw new Error(errorMsg);
+        }
+    } catch (error) {
+        console.log("ERRO: " + error);
+    }
+}
+
+const senhaBtn = document.getElementById('trocarSenha')
+const popUpTrocarSenha = document.getElementById('popUpTrocarSenha')
+const fecharTrocarSenha = document.getElementById('fecharTrocarSenha')
+
+senhaBtn.addEventListener('click', () => {
+    popUpTrocarSenha.classList.add('mostrar')
+})
+
+fecharTrocarSenha.addEventListener('click', () => {
+    popUpTrocarSenha.classList.remove('mostrar')
+})
+
+document.getElementById('deslogar').addEventListener('click', deslogar)

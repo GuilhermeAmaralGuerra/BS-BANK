@@ -59,7 +59,7 @@
             </div>
 
             <div class="botoes">
-                <button>Trocar senha</button>
+                <button id="trocarSenha">Trocar senha</button>
                 <button id="enviarInformacoes">Efetuar alterações</button>
                 <button>Voltar</button>
             </div>
@@ -67,6 +67,32 @@
         </section>
 
     </main>
+
+    <div class="popUpTrocarSenha" id="popUpTrocarSenha">
+
+        <div class="popUpItens">
+
+            <div class="fecharBotao">
+                <button id="fecharTrocarSenha" class="fecharTrocarSenha">&times;</button>
+            </div>
+
+            <h2>Trocar Senha</h2>
+
+            <form action="" method="post">
+
+                <label for="senhaAntiga">Digite a senha antiga</label>
+                <input type="number" id="senhaAntiga">
+
+                <label for="senhaNova">Digite a nova senha:</label>
+                <input type="number" id="senhaNova">
+
+            </form>
+
+            <button id="enviarNovaSenha" class="enviarNovaSenha">Enviar</button>
+
+        </div>
+
+    </div>
 
     <script src="/js/conta.js"></script>
 </body>

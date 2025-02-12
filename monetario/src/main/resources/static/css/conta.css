@@ -176,3 +176,77 @@ main section .botoes button:hover{
     transform: scale(1.10);
     transition: 0.5s;
 }
+
+.popUpTrocarSenha{
+    display: none;
+    position: fixed;
+}
+
+.popUpTrocarSenha.mostrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 25rem;
+    background-color: #f4f6f8;
+    border: 2px solid #0056b3;
+    border-radius: 1rem;
+    top: 10rem;
+}
+
+.popUpTrocarSenha.mostrar .popUpItens{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.popUpTrocarSenha.mostrar .popUpItens .fecharBotao{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+.popUpTrocarSenha.mostrar .popUpItens .fecharTrocarSenha{
+    width: 2rem;
+    padding: 0.6rem;
+    color: #fff;
+    background-color: red;
+    cursor: pointer;
+    border: none;
+}
+
+.popUpTrocarSenha.mostrar .popUpItens h2{
+    font-size: 1.7rem;
+    color: #0056b3;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.popUpTrocarSenha.mostrar .popUpItens form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.popUpTrocarSenha.mostrar .popUpItenslabel label{
+    color: #0056b3;
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.popUpTrocarSenha.mostrar .popUpItens input{
+    width: 18rem;
+    height: 1.5rem;
+    background-color: #c3c3c3;
+    color: black;
+    border: none;
+    border-radius: 0.5rem;
+}
+.popUpTrocarSenha.mostrar .popUpItens .enviarNovaSenha{
+    width: 5rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: #0056b3;
+    cursor: pointer;
+    border: none;
+}
