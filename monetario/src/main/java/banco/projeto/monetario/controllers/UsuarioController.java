@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import banco.projeto.monetario.DTO.UsuarioAtualizarDTO;
 import banco.projeto.monetario.DTO.UsuarioDTO;
 import banco.projeto.monetario.domain.Usuario;
+import banco.projeto.monetario.request.TrocarSenhaPutRequestBody;
 import banco.projeto.monetario.request.UsuarioLoginRequestBody;
 import banco.projeto.monetario.request.UsuarioPostRequestBody;
 import banco.projeto.monetario.request.UsuarioPutRequestBody;
@@ -51,8 +52,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Usuario> save(@RequestBody UsuarioPostRequestBody usuarioPostRequestBody){
-        return new ResponseEntity<>(usuarioService.saveUsuario(usuarioPostRequestBody), HttpStatus.OK);
+    public ResponseEntity<Usuario> salvarUsuario(@RequestBody UsuarioPostRequestBody usuarioPostRequestBody){
+        return new ResponseEntity<>(usuarioService.salvarUsuario(usuarioPostRequestBody), HttpStatus.OK);
     }
 
     @PostMapping("/logar")
@@ -84,6 +85,16 @@ public class UsuarioController {
         );
 
         return new ResponseEntity<>(dto, HttpStatus.OK);
+    }
+
+    @PutMapping("trocar_senha")
+    public ResponseEntity<Usuario> trocarSenha(@RequestBody TrocarSenhaPutRequestBody trocarSenhaPutRequestBody, HttpSession session){
+        System.out.println("VAI COMEÇAR AQUI");
+
+        Long userId = (Long) session.getAttribute("userId");
+
+
+        return new ResponseEntity<Usuario>(usuarioService.trocarSenha(trocarSenhaPutRequestBody, userId), HttpStatus.OK);
     }
 
     @PostMapping("deslogar")

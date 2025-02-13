@@ -93,6 +93,61 @@ async function enviarNovasInformacoes() {
 
 document.getElementById('enviarInformacoes').addEventListener('click', enviarNovasInformacoes);
 
+const senhaBtn = document.getElementById('trocarSenha')
+const popUpTrocarSenha = document.getElementById('popUpTrocarSenha')
+const fecharTrocarSenha = document.getElementById('fecharTrocarSenha')
+
+senhaBtn.addEventListener('click', () => {
+    popUpTrocarSenha.classList.add('mostrar')
+})
+
+fecharTrocarSenha.addEventListener('click', () => {
+    popUpTrocarSenha.classList.remove('mostrar')
+})
+
+async function trocarSenha() {
+
+    const dadosForm = {
+        senhaAntiga: document.getElementById('senhaAntiga').value,
+        senhaNova: document.getElementById('senhaNova').value
+    }
+
+    if (dadosForm.senhaNova == "") {
+        alert("Você não digitou nada na nova senha!")
+        return;
+    }
+
+    try {
+        const resposta = await fetch("http://localhost:8080/trocar_senha", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dadosForm)
+        });
+
+        if(!resposta.ok){
+            const errorMsg = await resposta.text()
+            throw new Error(errorMsg)
+        } else{
+            alert("Dados atualizados com sucesso!")
+            window.location.reload()
+        }
+    } catch (error) {
+        console.error("Erro ao enviar dados: " + error)
+
+        if (error.message.includes("Você digitou a mesma senha!")) {
+            alert("Você digitou a mesma senha!")
+        } else if (error.message.includes("Senha errada!")) {
+            alert("Senha errada!")
+        } else if (error.message.includes("Você não digitou nada na nova senha!")){
+            alert("Você não digitou nada na nova senha!")
+        }
+    }
+}
+
+document.getElementById('enviarNovaSenha').addEventListener('click', trocarSenha)
+
 async function deslogar() {
     try {
         const resposta = await fetch("http://localhost:8080/deslogar", {
@@ -111,17 +166,5 @@ async function deslogar() {
         console.log("ERRO: " + error);
     }
 }
-
-const senhaBtn = document.getElementById('trocarSenha')
-const popUpTrocarSenha = document.getElementById('popUpTrocarSenha')
-const fecharTrocarSenha = document.getElementById('fecharTrocarSenha')
-
-senhaBtn.addEventListener('click', () => {
-    popUpTrocarSenha.classList.add('mostrar')
-})
-
-fecharTrocarSenha.addEventListener('click', () => {
-    popUpTrocarSenha.classList.remove('mostrar')
-})
 
 document.getElementById('deslogar').addEventListener('click', deslogar)

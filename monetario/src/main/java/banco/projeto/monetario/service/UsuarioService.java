@@ -11,9 +11,11 @@ import banco.projeto.monetario.DTO.CepValidadoDTO;
 import banco.projeto.monetario.domain.Usuario;
 import banco.projeto.monetario.exception.CriptografiaException;
 import banco.projeto.monetario.exception.DadoJaExisteException;
+import banco.projeto.monetario.exception.TrocarSenhaException;
 import banco.projeto.monetario.exception.UsuarioException;
 import banco.projeto.monetario.exception.ValidacaoException;
 import banco.projeto.monetario.repository.UsuarioRepository;
+import banco.projeto.monetario.request.TrocarSenhaPutRequestBody;
 import banco.projeto.monetario.request.UsuarioLoginRequestBody;
 import banco.projeto.monetario.request.UsuarioPostRequestBody;
 import banco.projeto.monetario.request.UsuarioPutRequestBody;
@@ -32,7 +34,7 @@ public class UsuarioService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Transactional(rollbackFor = Exception.class)
-    public Usuario saveUsuario(UsuarioPostRequestBody usuarioPostRequestBody){
+    public Usuario salvarUsuario(UsuarioPostRequestBody usuarioPostRequestBody){
 
         if (usuarioRepository.existsByCpf(usuarioPostRequestBody.getCpf())) {
             throw new DadoJaExisteException("CPF já cadastrado no sistema: " + usuarioPostRequestBody.getCpf());
@@ -180,6 +182,51 @@ public class UsuarioService {
         usuario.setCep(cepCriptografado);
 
         return usuario;
+    }
+
+    @Transactional
+    public Usuario trocarSenha(TrocarSenhaPutRequestBody trocarSenhaPutRequestBody, Long userId){
+
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(userId);
+
+        if (usuarioOptional.isEmpty()) {
+            
+            throw new UsuarioException("Usuário não encontrado"); 
+        }
+
+        System.out.println("Senha antiga 1: " + trocarSenhaPutRequestBody.getSenhaAntiga());
+        System.out.println("Senha nova 1: " + trocarSenhaPutRequestBody.getSenhaNova());
+
+        String senhaAtual = usuarioRepository.findPasswordById(userId);
+
+        if (trocarSenhaPutRequestBody.getSenhaAntiga().equals(trocarSenhaPutRequestBody.getSenhaNova())) {
+
+            throw new TrocarSenhaException("Você digitou a mesma senha!");
+
+        }
+
+        if (trocarSenhaPutRequestBody.getSenhaNova().equals("")) {
+            throw new TrocarSenhaException("Você não digitou nada na nova senha!");
+        }
+        
+        if (VerificacaoUtils.verificarSenha(trocarSenhaPutRequestBody.getSenhaAntiga(), senhaAtual) == false) {
+
+            throw new TrocarSenhaException("Senha errada!");
+
+        } else{
+
+            Usuario usuario = usuarioOptional.get();
+
+            System.out.println("Senha antiga 2: " + trocarSenhaPutRequestBody.getSenhaAntiga());
+            System.out.println("Senha nova 2: " + trocarSenhaPutRequestBody.getSenhaNova());
+
+            String senhaNovaCriptografada = CriptografiaUtils.codificarSenha(trocarSenhaPutRequestBody.getSenhaNova());
+            usuario.setSenha(senhaNovaCriptografada);
+
+            return usuario;
+        }
+
+        
     }
 
 }
